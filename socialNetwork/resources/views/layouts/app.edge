@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SocialNetwork</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav class="w-full bg-white shadow-md border flex justify-center px-4 py-2">
+        <div class="w-1/2 flex justify-between">
+            <h1 class="text-xl font-semibold">
+            <a href="/">SocialNetwork</a>
+        </h1>
+        @if(auth.isAuthenticated && auth.user.email_verified_at == null)
+   <form action="/verify-email" method="post">
+      <input type="submit" value="Verify Email" class="px-2 py-1 rounded">
+   </form>
+   @endif
+        <div>
+            @if(auth.isAuthenticated)
+            <a href="/{{auth.user.username}}"><img src="{{auth.user.avatar}}" class="h-8 w-8 rounded border" alt="profile">
+            </a>
+            
+            @endif
+        </div>
+        </div>
+    </nav>
+    <div class="bg-gray-100 min-h-screen flex justify-center">
+        <div class="w-full md:w-1/2"> 
+   @section('content') 
+   @endsection
+    </div>
+</div>
+</body>
+</html>
