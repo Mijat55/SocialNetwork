@@ -1,0 +1,3 @@
+Aplikacija ima mogućnost kreiranja novog User-a(sign up),
+login,logout,verifikaciju emaila(mailtrap),profil,upload slike,upload opisa,pregled svih postova,faker podatci.
+Potrebno social_auth,like,delete post,follow-unfollow opcije (Ako je potrebno mogu odraditi)
