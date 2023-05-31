@@ -11,11 +11,12 @@
      crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <nav class="w-full bg-white shadow-md border flex justify-center px-4 py-2">
+    <nav class="w-full bg-gray-300 shadow-md border flex justify-center px-4 py-2">
         <div class="w-1/2 flex justify-between">
             <h1 class="text-xl font-semibold">
             <a href="/">SocialNetwork</a>
         </h1>
+        
         @if(auth.isAuthenticated && auth.user.email_verified_at == null)
    <form action="/verify-email" method="post">
       <input type="submit" value="Verify Email" class="px-2 py-1 rounded">
@@ -23,18 +24,44 @@
    @endif
         <div>
             @if(auth.isAuthenticated)
-            <a href="/{{auth.user.username}}"><img src="{{auth.user.avatar}}" class="h-8 w-8 rounded border" alt="profile">
-            </a>
+            <div class="relative inline-block text-left">
+                <div id="dropdown" class=" cursor-pointer outline-none focus-none">
+                  
+                    <img src="{{auth.user.avatar}}" class="h-8 w-8 rounded border" alt="profile">
+                  
+                </div>
+                <div id="dropdown-items" class=" hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                  <div class="py-1" role="none">
+                    <a href="/{{auth.user.username}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 border-b border-t" role="menuitem">Profile</a>
+                    <form action="/logout" method="post">
+                      <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              
+             
             
             @endif
         </div>
         </div>
     </nav>
-    <div class="bg-gray-100 min-h-screen flex justify-center">
+    <div class="bg-gray-500 min-h-screen flex justify-center">
         <div class="w-full md:w-1/2"> 
    @section('content') 
    @endsection
     </div>
 </div>
+<script>
+    const dropdown = document.getElementById('dropdown')
+    const item = document.getElementById('dropdown-items')
+   dropdown.addEventListener('click',()=>{
+    if(item.classList.contains('hidden')){
+       item.classList.remove('hidden') 
+    }else{
+  item.classList.add('hidden')
+    }
+    })
+ </script>
 </body>
 </html>
