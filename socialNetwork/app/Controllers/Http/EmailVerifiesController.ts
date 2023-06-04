@@ -4,14 +4,14 @@ import { DateTime } from 'luxon'
 
 export default class EmailVerifiesController {
     public async index({response, auth}: HttpContextContract){
-        auth.user?.sendVerificationEmail()
+        await auth.user?.sendVerificationEmail()
         return response.redirect().back()
     }
     public async  confirm({ response, request, params}:HttpContextContract){
         if(request.hasValidSignature()){
             const user =  await User.findByOrFail('email',params.email)
             user.email_verified_at = DateTime.local()
-            user.save() 
+            await  user.save() 
             return response.redirect(`/${user.username}`)  
         }else{
             return 'Invalid Token'

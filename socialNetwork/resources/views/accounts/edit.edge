@@ -4,6 +4,28 @@
 <div class="mt-20 bg-white border rounded p-5">
 <h1 class="text-center text-2xl my-4">Update Your Details</h1>
 <form action="" method="post" enctype="multipart/form-data" class="py-2">
+    <div>
+        <label for="username">Set New Username:</label>
+        <input class="w-full bg-gray-200 rounded px-2 py-1 border my-1 placeholder-gray-600" type="text" name="username" id="username" placeholder="Userame" value="{{ auth.user.username }}">
+      </div>
+      <div>
+        <label for="name">Set New Name:</label>
+        <input class="w-full bg-gray-200 rounded px-2 py-1 border my-1 placeholder-gray-600" type="text" name="name" id="name" placeholder="Name" value="{{ auth.user.name }}">
+        @if (session.get('success'))
+  <div class="bg-green-200 text-green-800 px-4 py-2 rounded">
+    {{ session.get('success') }}
+  </div>
+@endif
+     </div>
+      <div>
+        <label for="password">Current Password:</label>
+        <input class="w-full bg-gray-200 rounded px-2 py-1 border my-1 placeholder-gray-600" type="password" name="current_password" id="current_password" placeholder="Current Password">
+      </div>
+      <div>
+        <label for="password">Set New Password:</label>
+        <input class="w-full bg-gray-200 rounded px-2 py-1 border my-1 placeholder-gray-600" type="password" name="new_password" id="new_password" placeholder="New Password">
+        
+      </div>
     <div class="">
         <p class="my-2">Bio</p>
         <textarea class="border w-full" name="details" rowa="4" placeholder="Your Bio Comes Here">{{auth.user.details}}</textarea>

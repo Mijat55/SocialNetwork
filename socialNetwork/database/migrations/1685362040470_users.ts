@@ -6,13 +6,13 @@ export default class Users extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string('name')
-      table.string('email').index()
-      table.string('username',25).index()
+      table.string('name',30).notNullable()
+      table.string('email',50).index().notNullable()
+      table.string('username',30).index().notNullable()
       table.string('avatar').nullable()
-      table.string('details').nullable()
+      table.string('details',300).nullable()
       table.dateTime('email_verified_at').nullable()
-      table.string('password')
+      table.string('password').notNullable()
       table.timestamps()
     })
   }

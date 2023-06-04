@@ -14,14 +14,17 @@ export default class AuthController {
             name: schema.string(),
             email: schema.string({},[rules.email()]),
             username: schema.string({}),
-            password: schema.string({}),
+            password: schema.string({},[
+                rules.minLength(7)
+            ]),
 
             }),
             messages:{
                 'name.required': 'Full Name is required to sign up',
                 'email.required': 'Email is required to sign up',
                 'username.required': 'Username is required to sign up',
-                'password.required': 'Password is required to sign up',
+                'password.required': 'Password is required to sign up ',
+                'password.minLength': 'Password must be at least 7 characters',
                 
                 
             }
@@ -54,7 +57,7 @@ const req = await request.validate({schema:schema.create({
 messages:{
     'email.required': 'Email is required to login',
     'password.required': 'Password is required to login',
-    'password.minLength': 'Password must be at least 7 characters'
+    'password.minLength': 'Password must be at least 7 characters',
     
 }
 
@@ -64,7 +67,7 @@ const email= req.email
 const password = req.password
 const user = await auth.attempt(email,password)
 
-//auth.
+
 
 return response.redirect(`/${user.username}`)
 

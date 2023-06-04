@@ -18,8 +18,8 @@ export default class PostsController {
            
         }), 
         messages:{
-            'caption.required': 'Caption is required to login',
-            'image.required': 'Image is required to login',
+            'caption.required': 'Caption is required to upload ',
+            'image.required': 'Image is required to upload',
             
         }
         
