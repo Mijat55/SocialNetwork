@@ -12,7 +12,9 @@ export default class Users extends BaseSchema {
       table.string('avatar').nullable()
       table.string('details',300).nullable()
       table.dateTime('email_verified_at').nullable()
-      table.string('password').notNullable()
+      table.string('password').nullable()
+      table.string('provider').nullable()
+      table.string('provider_id').nullable()
       table.timestamps()
     })
   }

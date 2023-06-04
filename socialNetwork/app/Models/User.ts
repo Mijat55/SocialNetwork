@@ -20,7 +20,13 @@ export default class User extends BaseModel {
   public email: string
 
   @column()
-  public password: string
+  public password: string 
+
+  @column()
+  public provider: string
+
+  @column()
+  public providerId: string 
 
   @column()
   public username: string
