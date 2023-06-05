@@ -26,7 +26,7 @@ export default class User extends BaseModel {
   public provider: string
 
   @column()
-  public providerId: string 
+  public provider_Id: string 
 
   @column()
   public username: string

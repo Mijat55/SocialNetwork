@@ -12,11 +12,13 @@ Route.post('/verify-email', 'EmailVerifiesController.index').middleware('auth')
 Route.get('/verify-email/:email', 'EmailVerifiesController.confirm').as('verifyEmail')
 Route.post('/signup','AuthController.signup')
 
-Route.get('/login/google', 'AuthController.redirect')
-Route.get('/login/google/callback', 'AuthController.callback')
+
 
 Route.post('/login','AuthController.login')
 Route.post('/logout','AuthController.logout')
+
+Route.get('/login/google', 'SocialsController.redirect')
+Route.get('/login/google/callback', 'SocialsController.callback')
 
 Route.get('/posts/create','PostsController.create').middleware('auth')
 Route.post('/posts/create','PostsController.store').middleware('auth')
